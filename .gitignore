@@ -2,3 +2,4 @@
 .env
 data
 train_results
+.venv

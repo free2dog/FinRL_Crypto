@@ -677,7 +677,7 @@ class ShareSPG(nn.Module):  # SPG means stochastic policy gradient
         self.device = "cpu"
         if torch.cuda.is_available():
             self.device = "cuda"
-
+        print(f'compute device: {self.device}')
         nn_dense = DenseNet(mid_dim // 2)
         inp_dim = nn_dense.inp_dim
         out_dim = nn_dense.out_dim
