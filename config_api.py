@@ -2,5 +2,9 @@
 Enter your Binance API keys here.
 '''
 
-API_KEY_BINANCE = 'Enter your public key here!'
-API_SECRET_BINANCE = 'Enter your secret key here!'
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY_BINANCE = os.getenv('BINANCE_KEY')
+API_SECRET_BINANCE = os.getenv('BINANCE_SECRET')

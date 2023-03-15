@@ -40,9 +40,12 @@ class AgentBase:
         learning_rate = getattr(args, "learning_rate", 2**-12)
 
         self.states = None
-        self.device = torch.device(
-            f"cuda:{gpu_id}" if (torch.cuda.is_available() and (gpu_id >= 0)) else "cpu"
-        )
+        device = "cpu"
+        #if torch.backends.mps.is_available() and torch.backends.mps.is_built():
+        #    device = f"mps"
+        if torch.cuda.is_available() and gpu_id >= 0:
+            device = f'cuda:{gpu_id}'
+        self.device = torch.device(device)
         self.traj_list = [
             [list() for _ in range(4 if if_off_policy else 5)]
             for _ in range(self.env_num)

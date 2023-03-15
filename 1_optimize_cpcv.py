@@ -317,7 +317,7 @@ def optimize(name_test, model_name, gpu_id):
     cwd = f"./train_results/cwd_tests/{name_test}"
     path = f"./train_results/{res_timestamp}_{name_test}/"
     if not os.path.exists(path):
-        os.mkdir(path)
+        os.makedirs(path)
 
     with open(f"./train_results/{res_timestamp}_{name_test}/logs.txt", "w") as f:
         f.write(f"##################################  || {model_name} || ##################################")

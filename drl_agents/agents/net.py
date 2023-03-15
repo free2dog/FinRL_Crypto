@@ -673,7 +673,10 @@ class ShareSPG(nn.Module):  # SPG means stochastic policy gradient
     def __init__(self, mid_dim, state_dim, action_dim):
         super().__init__()
         self.log_sqrt_2pi_sum = np.log(np.sqrt(2 * np.pi)) * action_dim
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        # self.device = "mps" if torch.backends.mps.is_available() and torch.backends.mps.is_built() else "cpu"
+        self.device = "cpu"
+        if torch.cuda.is_available():
+            self.device = "cuda"
 
         nn_dense = DenseNet(mid_dim // 2)
         inp_dim = nn_dense.inp_dim
