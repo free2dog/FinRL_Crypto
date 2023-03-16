@@ -22,4 +22,5 @@ torch==1.13.1
 tqdm==4.63.0
 trading_calendars==2.1.1
 yfinance==0.1.63
-dotenv
+python-dotenv
+box2d-py
